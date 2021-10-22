@@ -1,6 +1,6 @@
 const { events } = require("./data.json");
 
-export default function handler(req, res) {
+export default (req, res) => {
   const evt = events.filter((ev) => ev.slug === req.query.slug);
 
   if (req.method === "GET") {
@@ -9,4 +9,5 @@ export default function handler(req, res) {
     res.setHeader("Allow", ["GET"]);
     res.status(405).json({ message: `Method ${req.method} is not allowed` });
   }
-}
+};
+

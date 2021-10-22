@@ -22,13 +22,12 @@ export default function Home({ events }) {
   );
 }
 
-// runs this everytime we come home page
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
   const res = await fetch(`${API_URL}/api/events`);
   const events = await res.json();
 
   return {
-    props: { events: events.slice(0, 3) },
-    // revalidate: 1,
+    props: { events: events.slice(0, 3), revalidate: 1 },
   };
 }
