@@ -13,7 +13,7 @@ export default function EventsPage({ events }) {
     </Layout>
   );
 }
-
+         
 // runs this everytime we come home page
 export async function getServerSideProps() {
   const res = await fetch(`${API_URL}/events?_sort=date:ASC`);
