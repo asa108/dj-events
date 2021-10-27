@@ -138,7 +138,6 @@ export default function AddEventPage() {
         </div>
         <input type="submit" value="Add Event" className="btn" />
       </form>
-      <h1>Add Events</h1>
     </Layout>
   );
 }
