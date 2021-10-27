@@ -1,13 +1,16 @@
 import moment from "moment";
+import { FaImage } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/dist/client/link";
+import Image from "next/dist/client/image";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index.js";
 import styles from "@/styles/Form.module.css";
 import { element } from "prop-types";
+import { div } from "prelude-ls";
 
 export default function EditEventPage({ evt }) {
   const [values, setValues] = useState({
@@ -19,6 +22,9 @@ export default function EditEventPage({ evt }) {
     time: evt.time,
     description: evt.description,
   });
+  const [imagePreview, setImagePreview] = useState(
+    evt.image ? evt.image.formats.thumbnail.url : null
+  );
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -136,9 +142,22 @@ export default function EditEventPage({ evt }) {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <input type="submit" value="Add Event" className="btn" />
+        <input type="submit" value="Update Event" className="btn" />
       </form>
-      <h1>Update Events</h1>
+      <h2>Event Image</h2>
+      {imagePreview ? (
+        <Image src={imagePreview} height={100} width={170} alt="thumbnail" />
+      ) : (
+        <div>
+          <p>No image uploadted</p>
+        </div>
+      )}
+
+      <div>
+        <button className="btn-secondary">
+          <FaImage /> Set Image
+        </button>
+      </div>
     </Layout>
   );
 }
