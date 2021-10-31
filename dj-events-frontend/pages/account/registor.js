@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect, useContext } from "react";
 import Link from "next/dist/client/link";
 import Layout from "@/components/Layout";
+import AuthContext from "@/context/AuthContext";
 import styles from "@/styles/AuthForm.module.css";
 
 export default function RegistorPage() {
@@ -12,6 +13,8 @@ export default function RegistorPage() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
+  const { registor, error } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
@@ -19,7 +22,7 @@ export default function RegistorPage() {
       return;
     }
 
-    console.log({ username, email, password });
+    registor({ username, email, password });
   };
 
   return (
