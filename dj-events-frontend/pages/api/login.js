@@ -1,6 +1,5 @@
 import cookie from "cookie";
 import { API_URL } from "@/config/index";
-import { tokenizer } from "acorn";
 
 export default async (req, res) => {
   if (req.method === "POST") {

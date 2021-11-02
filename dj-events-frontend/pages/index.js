@@ -28,6 +28,7 @@ export async function getStaticProps() {
   const events = await res.json();
 
   return {
-    props: { events, revalidate: 1 },
+    props: { events },
+    revalidate: 1,
   };
 }
