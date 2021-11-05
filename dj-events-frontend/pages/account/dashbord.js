@@ -1,4 +1,4 @@
-import { parseCookie } from "@/helpers/index";
+import { parseCookies } from "@/helpers/index";
 import Layout from "@/components/Layout";
 import DashboardEvent from "@/components/DashboardEvent";
 import { API_URL } from "@/config/index";
@@ -22,7 +22,7 @@ export default function DashbordPage({ events }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const { token } = parseCookie(req);
+  const { token } = parseCookies(req);
 
   const res = await fetch(`${API_URL}/events/me`, {
     method: "GET",

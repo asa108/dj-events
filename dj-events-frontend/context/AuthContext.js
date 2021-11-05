@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const router = useRouter();
 
-  useEffect(() => checkUserLoggedIn());
+  useEffect(() => checkUserLoggedIn(), []);
 
   // Registor user
   const registor = async (user) => {
@@ -62,6 +62,7 @@ export const AuthProvider = ({ children }) => {
     const res = await fetch(`${NEXT_URL}/api/logout`, {
       method: "POST",
     });
+
     if (res.ok) {
       setUser(null);
       router.push("/");

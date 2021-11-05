@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
-import { async } from "regenerator-runtime";
 
 export default function ImageUpload({ evtId, imageUploaded }) {
   const [image, setImage] = useState(null);
